@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.aabryant</groupId>
+  <version>1.0.0</version>
+  <artifactId>eo-archive</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Etrian Odyssey Archive Tool</name>
+  <description>An archive (un)packer for 3DS Etrian Odyssey games.</description>
+  
+  <licenses>
+    <license>
+      <name>GPL v3</name>
+      <url>https://www.gnu.org/licenses/gpl.html</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>Amy Bryant</id>
+    </developer>
+  </developers>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+  </dependencies>
+
+  <build>
+    <finalName>eo-archive-base</finalName>
+    <defaultGoal>clean package</defaultGoal>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <!--<configuration>
+          <compilerArgs>
+            <arg>-Xlint:unchecked</arg>
+          </compilerArgs>
+        </configuration>-->
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.github.aabryant.eo.archive.Main</mainClass>
+            </manifest>
+          </archive>
+          <finalName>eo-archive</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
